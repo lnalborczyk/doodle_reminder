@@ -1,0 +1,3 @@
+# Sending automatised email reminder to the participants of a doodle
+
+Reshaping an excel file issued from doodle and sending an reminder email the day before the meeting...
