@@ -14,13 +14,16 @@ The first thing to do is to reshaping this excel file so that we can automatical
 
 ## Sending emails from R
 
-The second part of the script is sending email automatically to the participants that are registered the day after (see lines 148-150). This part of the script is based on the amazing tutorial from Jennifer Bryan: https://github.com/jennybc/send-email-with-r
+The second part of the script is sending email automatically to the participants that are registered the day after (see lines 143-145). This part of the script is based on the amazing tutorial from Jennifer Bryan: https://github.com/jennybc/send-email-with-r
 
 ## Scheduling it (for Mac OSX)
 
 Mac OSX offers a simple way to schedule the execution of an app through the Automator. Use Automator > New document > Calendar alarm. Add a `Run Shell Script` and specify the following line, replacing `your_path` by the path to the `R` script.
 
-`/usr/local/bin/Rscript --vanilla /your_path/automatic_email_reminder.R`
+```
+cd your_path
+/usr/local/bin/Rscript --vanilla automatic_email_reminder.R
+```
 
 Then, in the Calendar, set the hour at which you want this alarm to run the above `R` script (I have defined to run it every day at 4pm).
 

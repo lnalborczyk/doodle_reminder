@@ -9,11 +9,6 @@ library(readxl)
 library(gmailr)
 library(purrr)
 
-# NB: this won't work if executed from RStudio, but will work if the script if sourced
-# getting the directory of the current script
-
-setwd(getSrcDirectory()[1])
-
 reiterate <- function(x) {
     
     goodIdx <- !is.na(as.character(x) )
@@ -111,7 +106,7 @@ data <- data[, 1:2] %>% magrittr::set_colnames(c("time", "participant") )
 
 ################################################
 # sending emails from R
-################################
+###################################
 
 # title of the mail
 this_hw <- "Experience 'Validation d'un nouveau test de QI'"
