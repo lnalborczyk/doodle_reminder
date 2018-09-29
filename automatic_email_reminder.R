@@ -44,7 +44,7 @@ data <- rbind(x[2,], x[1,], data[2:nrow(data), ])
 # "naming" the first four rows
 data[1:4, 1] <- c("year", "month", "day", "hour")
 
-# extractong the day number
+# extracting the day number
 data[3, 2:ncol(data)] <- substr(data[3, 2:ncol(data)], 4, 6)
 
 # concatenating rows
@@ -142,7 +142,7 @@ edat <-
 # identify participants registered for tomorrow
 today <- Sys.time() %>% as.Date
 tomorrow <- today + 1
-ppts <- which(as.Date(edat$time) == tomorrow+2) %>% as.numeric
+ppts <- which(as.Date(edat$time) == tomorrow) %>% as.numeric
 
 # if some participants are planned for tomorrow, send emails
 if (!is_empty(ppts) ) {
