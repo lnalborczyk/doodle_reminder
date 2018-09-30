@@ -23,7 +23,7 @@ cd your_path
 /usr/local/bin/Rscript --vanilla automatic_email_reminder.R
 ```
 
-Then, in the Calendar, set the hour at which you want this alarm to run the above `R` script (I have defined to run it every day at 4pm).
+Then, in the Calendar, set the hour at which you want this alarm to run the above `R` script (I have defined it to run the script every day at 4pm).
 
 See also this link for more information: https://forums.macrumors.com/threads/schedule-automator-workflow-or-app.1996548/
 

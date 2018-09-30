@@ -38,7 +38,7 @@ data[3, 2:ncol(data)] <- substr(data[3, 2:ncol(data)], 1, 5)
 # split the month and year, rbind it and transpose it
 x <- strsplit(as.character(data[1, ]), " ", fixed = TRUE) %>% do.call(rbind, .) %>% t
 
-# rbind it
+# rbind te above rows
 data <- rbind(x[2,], x[1,], data[2:nrow(data), ])
 
 # "naming" the first four rows
@@ -64,7 +64,7 @@ data <- data %>% slice(-1)
 # removing old day and month
 data[, 2:3] <- NULL
 
-# transforming to date format
+# transforming it to date format
 data[, 1] <- as.Date(data[, 1], format = "%Y, %B, %d") 
 
 # joining date and time
@@ -118,15 +118,15 @@ email_sender <- "Ladislas Nalborczyk <ladislas.nalborczyk@gmail.com>"
 optional_bcc <- "Ladislas Nalborczyk <ladislas.nalborczyk@gmail.com>"
 
 # body of the mail
-body <- "Bonjour.
+body <- "Dear Mr. or Mrs.,
 
-Je vous confirme et rappelle votre inscription à l'expérience ..., le %s.
+This is reminder for the experiment [name of the experiment]. You are expected tomorrow at %s.
 
-L'expérience aura lieu ...
+The experiment will be hold in [place of the experiment].
 
-Cordialement,
+Best regards,
 
-l'équipe de recherche"
+The research team"
 
 # putting all the info in a single dataframe
 edat <-
@@ -136,7 +136,8 @@ edat <-
         Bcc = optional_bcc,
         From = email_sender,
         Subject = sprintf(this_hw),
-        body = sprintf(body, time)
+        # keeping only the hour
+        body = sprintf(body, strftime(edat$time, format = "%Hh%M") )
     )
 
 # identify participants registered for tomorrow
